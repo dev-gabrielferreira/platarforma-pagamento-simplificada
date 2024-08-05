@@ -8,13 +8,16 @@ use Tests\TestCase;
 
 class TransactionsTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
+    public function test_list_transactions(): void
+    {
+
+        $response = $this->get(route('transfers.index'));
         $response->assertStatus(200);
+        $response->assertJsonStructure([
+            '*' => ['id', 'value', 'payer', 'payee', 'created_at', 'updated_at']
+        ]);
+    
     }
 }

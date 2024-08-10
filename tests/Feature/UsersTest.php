@@ -16,7 +16,7 @@ class UsersTest extends TestCase
         $response = $this->get(route('users.index'));
         $response->assertStatus(200);
         $response->assertJsonStructure([
-            '*' => ['id', 'name', 'cpf', 'email', 'type', 'created_at', 'updated_at']
+            '*' => ['id', 'balance', 'name', 'cpf', 'email', 'type', 'created_at', 'updated_at']
         ]);
 
     }
@@ -28,7 +28,8 @@ class UsersTest extends TestCase
             "email" => "user1@email.com",
             "type" => "usuario",
             "cpf" => "153.571.430-13",
-            "password" => "12345678"
+            "password" => "12345678",
+            "balance" => 0
         ];
 
         $response = $this->post(route("users.store"), $data);
@@ -42,7 +43,8 @@ class UsersTest extends TestCase
             "email" => "user1@email.com",
             "type" => "usuario",
             "cpf" => "512.718.540-36",
-            "password" => "12345678"
+            "password" => "12345678",
+            "balance" => 0
         ];
 
         $response = $this->post(route("users.store"), $data_repeated_email);
@@ -54,7 +56,8 @@ class UsersTest extends TestCase
             "email" => "user2@email.com",
             "type" => "usuario",
             "cpf" => "153.571.430-13",
-            "password" => "12345678"
+            "password" => "12345678",
+            "balance" => 0
         ];
 
         $response = $this->post(route("users.store"), $data_repeated_cpf);
@@ -66,7 +69,8 @@ class UsersTest extends TestCase
             "email" => "user2@email.com",
             "type" => "usuario",
             "cpf" => "178.248.297.07",
-            "password" => "12345678"
+            "password" => "12345678",
+            "balance" => 0
         ];
 
         $response = $this->post(route("users.store"), $data_without_name);

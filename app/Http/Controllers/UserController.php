@@ -22,7 +22,8 @@ class UserController extends Controller
             "email" => "string|required|unique:users",
             "type" => "required|string",
             "cpf" => "string|required|unique:users",
-            "password" => "string|required"
+            "password" => "string|required",
+            "balance" => "numeric|required"
         ]);
 
         
